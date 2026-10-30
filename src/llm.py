@@ -1,8 +1,9 @@
 """
-Módulo de Geração (Generation) do RAG.
-Usa o InferenceClient da Hugging Face com fallback automático para o trecho mais relevante.
+Módulo de geração de resposta (Generation) do RAG.
+Consulta um modelo de chat via Hugging Face InferenceClient ou usa fallback direto.
 """
 
+from pathlib import Path
 import os
 from typing import Any, Dict, List
 from dotenv import load_dotenv
@@ -10,31 +11,31 @@ from huggingface_hub import InferenceClient
 
 from src.rag import MENSAGEM_SEM_INFORMACAO
 
-# Carrega variáveis do arquivo .env, caso exista localmente
-load_dotenv()
+# Carrega as variáveis definidas no arquivo .env (se existir)
+CAMINHO_ENV = Path(__file__).resolve().parent.parent / ".env"
+load_dotenv(dotenv_path=CAMINHO_ENV, override=True)
 
-# Modelo de chat leve e gratuito na Inference API da Hugging Face
-MODELO_LLM_PADRAO = "Qwen/Qwen2.5-7B-Instruct"
+MODELO_LLM_PADRAO = "meta-llama/Llama-3.1-8B-Instruct"
 
 PROMPT_SISTEMA = (
-    "Você é o ReeciclaEBot, um assistente educativo sobre descarte correto e "
+    "Você é o ReeciclaEBot, um assistente sobre descarte correto e "
     "reciclagem de resíduos no Brasil. "
     "Responda em português APENAS com base nos trechos recuperados fornecidos abaixo. "
-    "Não invente informações, números de leis ou endereços que não estejam nos trechos. "
-    "Cite explicitamente a categoria do resíduo na sua resposta e lembre o usuário "
+    "Não invente informações, números de leis ou locais que não estejam nos trechos. "
+    "Cite a categoria do resíduo na resposta e lembre o usuário "
     "de confirmar os pontos de coleta com a prefeitura ou cooperativa local."
 )
 
 
 def montar_contexto(trechos: List[Dict[str, Any]]) -> str:
-    """Formata os 3 trechos recuperados em texto legível para enviar ao LLM."""
+    """Junta os trechos recuperados em um texto único para enviar no prompt do LLM."""
     blocos = []
     for indice, item in enumerate(trechos, start=1):
         bloco = (
             f"[Trecho {indice} | Categoria: {item['categoria']} | "
             f"Similaridade: {item['pontuacao']:.2f}]\n"
-            f"Pergunta base: {item['pergunta']}\n"
-            f"Resposta base: {item['resposta']}\n"
+            f"Pergunta: {item['pergunta']}\n"
+            f"Resposta: {item['resposta']}\n"
             f"Fonte: {item['fonte']}"
         )
         blocos.append(bloco)
@@ -42,14 +43,14 @@ def montar_contexto(trechos: List[Dict[str, Any]]) -> str:
 
 
 def _limpar_todo_da_fonte(fonte: str) -> str:
-    """Remove anotações internas de TODO da fonte antes de exibir ao usuário final."""
+    """Retira marcações internas de revisão '(TODO: ...)' do texto da fonte."""
     return fonte.split("(TODO:")[0].strip()
 
 
 def gerar_resposta_fallback(melhor_item: Dict[str, Any]) -> str:
     """
-    Modo de segurança (fallback): usado quando não há HF_TOKEN configurado
-    ou quando a chamada externa à API da Hugging Face falha.
+    Retorna diretamente a resposta do documento mais parecido (Top-1)
+    quando não há HF_TOKEN configurado ou quando a API falha.
     """
     fonte_limpa = _limpar_todo_da_fonte(melhor_item["fonte"])
     return (
@@ -60,7 +61,7 @@ def gerar_resposta_fallback(melhor_item: Dict[str, Any]) -> str:
 
 
 def _token_valido(token: str | None) -> bool:
-    """Verifica se o token de ambiente existe e não é apenas o texto de exemplo."""
+    """Checa se o token foi preenchido e não é o valor padrão de exemplo."""
     if not token:
         return False
     token_limpo = token.strip()
@@ -73,10 +74,10 @@ def gerar_resposta(
     confianca_suficiente: bool = True,
 ) -> str:
     """
-    Gera a resposta final ao usuário.
-    1. Se a pontuação máxima ficou abaixo do limiar, informa que não sabe.
-    2. Se houver HF_TOKEN válido, consulta o modelo de chat com os trechos.
-    3. Se não houver token ou ocorrer erro de rede/API, usa o fallback direto.
+    Fluxo principal de geração:
+    1. Se a pontuação for menor que o limiar, retorna aviso de que não possui a informação.
+    2. Se houver HF_TOKEN válido, envia os trechos para o LLM gerar a resposta.
+    3. Caso contrário (ou se a API der erro), retorna o fallback com o item mais parecido.
     """
     if not trechos_recuperados or not confianca_suficiente:
         return MENSAGEM_SEM_INFORMACAO
@@ -107,7 +108,7 @@ def gerar_resposta(
         if texto_gerado and texto_gerado.strip():
             return texto_gerado.strip()
     except Exception:
-        # TODO: Em produção, registrar o erro em um log estruturado (logging)
+        # TODO: Adicionar log de erro caso queira monitorar falhas da API
         pass
 
     return gerar_resposta_fallback(trechos_recuperados[0])

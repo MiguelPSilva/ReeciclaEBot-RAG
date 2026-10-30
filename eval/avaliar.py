@@ -1,6 +1,6 @@
 """
-Script de avaliação da recuperação (Retrieval) do ReeciclaEBot-RAG.
-Mede a taxa de acerto (Hit Rate / Recall) no Top-1 e no Top-3 usando 20 perguntas reformuladas.
+Avaliação da recuperação (Retrieval) do ReeciclaEBot-RAG.
+Calcula a taxa de acerto no Top-1 e no Top-3 para as 20 perguntas de teste.
 """
 
 import json
@@ -8,7 +8,7 @@ from pathlib import Path
 import sys
 from typing import Dict, List, Any
 
-# Garante que a pasta raiz do projeto esteja no sys.path ao rodar "python eval/avaliar.py"
+# Adiciona a pasta raiz do projeto ao caminho do Python para importar o pacote src
 RAIZ_PROJETO = Path(__file__).resolve().parent.parent
 if str(RAIZ_PROJETO) not in sys.path:
     sys.path.insert(0, str(RAIZ_PROJETO))
@@ -21,7 +21,7 @@ CAMINHO_PERGUNTAS_TESTE = Path(__file__).resolve().parent / "perguntas_teste.jso
 def carregar_perguntas_teste(
     caminho: Path = CAMINHO_PERGUNTAS_TESTE,
 ) -> List[Dict[str, str]]:
-    """Carrega a lista de perguntas de teste com o id_esperado."""
+    """Lê o arquivo JSON com as 20 perguntas de teste."""
     with open(caminho, mode="r", encoding="utf-8") as arquivo:
         return json.load(arquivo)
 
@@ -30,7 +30,8 @@ def avaliar_recuperacao(
     buscador: BuscadorRAG, casos_teste: List[Dict[str, str]]
 ) -> Dict[str, Any]:
     """
-    Executa cada pergunta de teste no buscador e contabiliza acertos no Top-1 e no Top-3.
+    Testa cada pergunta no buscador e verifica se o id_esperado
+    apareceu em 1º lugar (Top-1) ou entre os 3 primeiros (Top-3).
     """
     total = len(casos_teste)
     acertos_top1 = 0
@@ -41,10 +42,12 @@ def avaliar_recuperacao(
         pergunta = caso["pergunta"]
         id_esperado = caso["id_esperado"]
 
+        # Busca os 3 documentos mais parecidos
         resultados = buscador.buscar(pergunta, top_k=3)
         ids_retornados = [item["id"] for item in resultados]
         nota_top1 = resultados[0]["pontuacao"] if resultados else 0.0
 
+        # Verifica se acertou na primeira posição ou entre as três primeiras
         acertou_1 = len(ids_retornados) > 0 and ids_retornados[0] == id_esperado
         acertou_3 = id_esperado in ids_retornados
 
@@ -75,7 +78,7 @@ def avaliar_recuperacao(
 
 
 def imprimir_relatorio(metricas: Dict[str, Any]) -> None:
-    """Imprime no terminal o resultado detalhado por pergunta e o resumo final."""
+    """Mostra no terminal o resultado de cada pergunta e a porcentagem final."""
     print("=" * 72)
     print("AVALIAÇÃO DE RECUPERAÇÃO (RETRIEVAL) - ReeciclaEBot-RAG")
     print("=" * 72)

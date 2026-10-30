@@ -1,18 +1,6 @@
-# Interface web interativa
 gradio>=4.0.0
-
-# Geração de embeddings (vetores numéricos de texto)
 sentence-transformers>=2.2.2
-
-# Operações matemáticas e cálculo de similaridade de cosseno
 numpy>=1.24.0
-
-# Cliente para chamar modelos de linguagem (LLMs) na API da Hugging Face
 huggingface_hub>=0.20.0
-
-# Leitura de variáveis de ambiente do arquivo .env
 python-dotenv>=1.0.0
-
-# Framework para rodar os testes automatizados
 pytest>=7.4.0
-

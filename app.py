@@ -1,7 +1,5 @@
 """
-Interface web interativa do ReeciclaEBot-RAG construída com Gradio.
-Mantém a tela principal limpa para o usuário final e esconde os detalhes técnicos
-(trechos e pontuações) em uma aba recolhida (fechada por padrão) para uso apenas em entrevistas.
+Interface web do ReeciclaEBot-RAG usando Gradio.
 """
 
 from typing import List, Dict, Any, Tuple
@@ -10,12 +8,12 @@ import gradio as gr
 from src.rag import BuscadorRAG, LIMIAR_PADRAO
 from src.llm import gerar_resposta
 
-# Inicializa o buscador uma única vez ao subir a aplicação
+# Guarda a instância do buscador para não recarregar o modelo a cada pergunta
 BUSCADOR: BuscadorRAG | None = None
 
 
 def obter_buscador() -> BuscadorRAG:
-    """Retorna a instância do buscador RAG, inicializando-a na primeira chamada."""
+    """Inicializa o BuscadorRAG apenas na primeira vez que for chamado."""
     global BUSCADOR
     if BUSCADOR is None:
         BUSCADOR = BuscadorRAG(limiar=LIMIAR_PADRAO)
@@ -25,9 +23,7 @@ def obter_buscador() -> BuscadorRAG:
 def formatar_trechos_para_exibicao(
     trechos: List[Dict[str, Any]], limiar: float
 ) -> str:
-    """
-    Formata os 3 itens mais parecidos com suas pontuações (visível apenas se abrir a aba técnica).
-    """
+    """Formata os 3 documentos recuperados e suas pontuações em Markdown."""
     if not trechos:
         return "Nenhum trecho recuperado."
 
@@ -52,15 +48,14 @@ def formatar_trechos_para_exibicao(
 
 
 def responder_usuario(pergunta: str, limiar: float = LIMIAR_PADRAO) -> Tuple[str, str]:
-    """
-    Função principal chamada pelo Gradio quando o usuário envia uma pergunta.
-    """
+    """Executa a busca RAG e gera a resposta para a interface."""
     if not pergunta or not pergunta.strip():
         return "Por favor, digite uma dúvida sobre descarte ou reciclagem.", ""
 
     buscador = obter_buscador()
     buscador.limiar = float(limiar)
 
+    # Busca os 3 itens mais parecidos e verifica se passou da nota mínima
     trechos = buscador.buscar(pergunta, top_k=3)
     confiavel = buscador.tem_confianca_suficiente(trechos)
 
@@ -74,7 +69,7 @@ def responder_usuario(pergunta: str, limiar: float = LIMIAR_PADRAO) -> Tuple[str
 
 
 def construir_interface() -> gr.Blocks:
-    """Monta a tela limpa do Gradio focada no usuário final."""
+    """Cria os componentes visuais da página no Gradio."""
     with gr.Blocks(title="ReeciclaEBot-RAG ♻️") as demo:
         gr.Markdown(
             "# ♻️ ReeciclaEBot\n"
@@ -105,12 +100,12 @@ def construir_interface() -> gr.Blocks:
                 ["Onde descartar pilhas alcalinas e bateria de celular inchada?"],
             ],
             inputs=[campo_pergunta],
-            label="Perguntas frequentes (clique para testar):",
+            label="Perguntas frequentes:",
         )
 
-        # Aba oculta por padrão: o usuário comum não vê as notas, mas você pode abrir na entrevista!
+        # Seção recolhida por padrão para inspecionar os trechos e scores do RAG
         with gr.Accordion(
-            "⚙️ Detalhes Técnicos do RAG (Oculto para o usuário — abrir apenas para inspeção técnica)",
+            "Detalhes da busca (trechos recuperados e pontuações)",
             open=False,
         ):
             controle_limiar = gr.Slider(
@@ -118,12 +113,13 @@ def construir_interface() -> gr.Blocks:
                 maximum=0.85,
                 value=LIMIAR_PADRAO,
                 step=0.05,
-                label="Limiar mínimo de similaridade (Cosine Similarity Threshold)",
+                label="Limiar mínimo de similaridade",
             )
             painel_explicacao = gr.Markdown(
-                value="*Envie uma pergunta para inspecionar os 3 documentos recuperados e suas pontuações.*"
+                value="*Envie uma pergunta para ver os 3 trechos mais próximos e suas pontuações.*"
             )
 
+        # Conecta o clique do botão e o Enter do teclado à função responder_usuario
         botao_enviar.click(
             fn=responder_usuario,
             inputs=[campo_pergunta, controle_limiar],
