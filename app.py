@@ -5,6 +5,13 @@ Interface web do ReeciclaEBot-RAG usando Gradio.
 from typing import List, Dict, Any, Tuple
 import gradio as gr
 
+try:
+    import spaces  # Usado apenas quando hospedado em ZeroGPU no Hugging Face Spaces
+    decorador_gpu = spaces.GPU
+except ImportError:
+    def decorador_gpu(func):  # No computador local ou CPU basic, não altera a função
+        return func
+
 from src.rag import BuscadorRAG, LIMIAR_PADRAO
 from src.llm import gerar_resposta
 
@@ -47,6 +54,7 @@ def formatar_trechos_para_exibicao(
     return "\n\n---\n\n".join(linhas)
 
 
+@decorador_gpu
 def responder_usuario(pergunta: str, limiar: float = LIMIAR_PADRAO) -> Tuple[str, str]:
     """Executa a busca RAG e gera a resposta para a interface."""
     if not pergunta or not pergunta.strip():
