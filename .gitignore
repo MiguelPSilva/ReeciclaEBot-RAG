@@ -1,0 +1,23 @@
+# Ambientes virtuais Python
+venv/
+.venv/
+env/
+
+# Arquivos de variáveis de ambiente (NUNCA subir chaves secretas!)
+.env
+
+# Cache do Python e do Pytest
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Cache de modelos da Hugging Face (caso baixados localmente)
+.cache/
+
+# Arquivos de sistema e editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+

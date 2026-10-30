@@ -1,0 +1,82 @@
+[
+  {
+    "pergunta": "Acabou a carga do controle remoto, onde jogo fora as pilhas alcalinas?",
+    "id_esperado": "doc_01"
+  },
+  {
+    "pergunta": "A bateria do meu smartphone estufou e está perigosa, como me desfazer dela?",
+    "id_esperado": "doc_02"
+  },
+  {
+    "pergunta": "Troquei a bateria arriada do meu automóvel, o que faço com a peça antiga de chumbo?",
+    "id_esperado": "doc_03"
+  },
+  {
+    "pergunta": "Fritei batata e sobrou bastante óleo usado na frigideira, como descartar sem entupir o ralo?",
+    "id_esperado": "doc_04"
+  },
+  {
+    "pergunta": "Tenho lâmpadas tubulares antigas que contêm vapor de mercúrio, onde devo entregar?",
+    "id_esperado": "doc_06"
+  },
+  {
+    "pergunta": "Deixei cair uma lâmpada fluorescente no chão da sala e ela estilhaçou, qual o procedimento seguro?",
+    "id_esperado": "doc_07"
+  },
+  {
+    "pergunta": "Estou com vários carregadores quebrados, fones velhos e um telefone celular sem conserto, onde levar?",
+    "id_esperado": "doc_09"
+  },
+  {
+    "pergunta": "Minha geladeira velha e meu fogão pifaram de vez, como descartar esses aparelhos pesados?",
+    "id_esperado": "doc_10"
+  },
+  {
+    "pergunta": "Achei cartelas de antibiótico e xarope fora do prazo de validade no armário, posso jogar na privada?",
+    "id_esperado": "doc_11"
+  },
+  {
+    "pergunta": "Aplico insulina em casa todos os dias, como descartar as seringas e agulhas sem furar ninguém?",
+    "id_esperado": "doc_13"
+  },
+  {
+    "pergunta": "Um copo de vidro caiu e virou um monte de cacos cortantes, como embrulhar para o lixeiro não se cortar?",
+    "id_esperado": "doc_15"
+  },
+  {
+    "pergunta": "Meu espelho do banheiro rachou e uma travessa de pirex trincou, eles entram na reciclagem de vidro comum?",
+    "id_esperado": "doc_16"
+  },
+  {
+    "pergunta": "A caixa de papelão da pizza veio toda manchada de queijo e gordura, posso pôr no cesto de papel reciclável?",
+    "id_esperado": "doc_18"
+  },
+  {
+    "pergunta": "Aquela notinha amarela de cupom fiscal da maquininha do mercado pode ser reciclada junto com papel sulfite?",
+    "id_esperado": "doc_19"
+  },
+  {
+    "pergunta": "Bandejinhas e caixas térmicas de isopor limpas podem ir para a coleta seletiva de plástico?",
+    "id_esperado": "doc_21"
+  },
+  {
+    "pergunta": "Como devo preparar latinhas de cerveja e latas de milho em conserva antes de mandar para a reciclagem?",
+    "id_esperado": "doc_23"
+  },
+  {
+    "pergunta": "Sobraram alguns sacos de tijolo quebrado e restos de azulejo de uma pequena obra no banheiro, onde levo?",
+    "id_esperado": "doc_25"
+  },
+  {
+    "pergunta": "Troquei os quatro pneus carecas do carro, onde devo destinar a borracha velha para não juntar mosquito da dengue?",
+    "id_esperado": "doc_27"
+  },
+  {
+    "pergunta": "Como aproveitar cascas de banana, talos de verdura e pó de café coado para fazer adubo em casa?",
+    "id_esperado": "doc_29"
+  },
+  {
+    "pergunta": "Posso jogar ossos de frango, restos de bife e cocô do cachorro dentro do minhocário doméstico?",
+    "id_esperado": "doc_30"
+  }
+]

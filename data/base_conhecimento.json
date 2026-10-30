@@ -1,0 +1,213 @@
+[
+  {
+    "id": "doc_01",
+    "pergunta": "Como descartar pilhas e baterias usadas corretamente?",
+    "resposta": "Pilhas e baterias comuns ou recarregáveis não devem ser jogadas no lixo comum nem no reciclável seco, pois contêm metais pesados que contaminam o solo e a água. Pela Política Nacional de Resíduos Sólidos (Lei 12.305/2010), elas fazem parte do sistema de logística reversa obrigatória: você deve entregá-las em coletores específicos presentes em supermercados, farmácias ou lojas de eletrônicos. Confirme sempre os pontos de coleta ativos com a prefeitura ou cooperativa local da sua cidade.",
+    "categoria": "pilhas e baterias",
+    "fonte": "Lei Federal nº 12.305/2010 (PNRS) - Art. 33 e Resolução CONAMA nº 401/2008 (TODO: conferir eventuais atualizações da norma CONAMA)"
+  },
+  {
+    "id": "doc_02",
+    "pergunta": "O que fazer com bateria de celular inchada ou estragada?",
+    "resposta": "Baterias de íons de lítio inchadas apresentam risco de vazamento químico e incêndio. Nunca fure, amasse ou descarte essa bateria no lixo doméstico. Guarde-a temporariamente em um recipiente seco e isolado longe do calor e leve-a a uma assistência técnica autorizada ou ponto de logística reversa de eletroeletrônicos e baterias. Lembre-se de confirmar os pontos de coleta especializados com a prefeitura ou cooperativa local.",
+    "categoria": "pilhas e baterias",
+    "fonte": "Política Nacional de Resíduos Sólidos (Lei 12.305/2010) - Logística Reversa (TODO: conferir orientações do fabricante/entidade gestora como Green Eletron)"
+  },
+  {
+    "id": "doc_03",
+    "pergunta": "Como descartar baterias automotivas ou de moto?",
+    "resposta": "Baterias de carros e motos possuem chumbo e solução ácida altamente corrosiva, sendo classificadas como resíduos perigosos. Pela regra de logística reversa no Brasil, o consumidor deve devolver a bateria usada na oficina ou loja onde adquiriu a nova, para que ela retorne ao fabricante para reciclagem. Confirme pontos adicionais de recebimento com a prefeitura ou cooperativa local.",
+    "categoria": "pilhas e baterias",
+    "fonte": "Lei Federal nº 12.305/2010 (Art. 33) e Resolução CONAMA nº 401/2008 (TODO: conferir regras estaduais específicas)"
+  },
+  {
+    "id": "doc_04",
+    "pergunta": "Como descartar óleo de cozinha usado sem poluir a água?",
+    "resposta": "Nunca despeje óleo de cozinha usado na pia, no vaso sanitário ou no ralo, pois ele entope tubulações e contamina milhares de litros de água. Espere o óleo esfriar completamente, coe os restos de alimentos e armazene-o em uma garrafa PET bem fechada. Depois, entregue a garrafa em pontos de entrega voluntária (PEVs), mercados parceiros ou associações que produzem sabão e biodiesel. Confirme os pontos de coleta de óleo com a prefeitura ou cooperativa local.",
+    "categoria": "óleo de cozinha",
+    "fonte": "Diretrizes de Educação Ambiental e Coleta Seletiva / PNRS Lei 12.305/2010 (TODO: conferir programas municipais de reciclagem de óleo)"
+  },
+  {
+    "id": "doc_05",
+    "pergunta": "Garrafa ou embalagem suja de óleo vegetal pode ir para a reciclagem de plástico?",
+    "resposta": "Embalagens plásticas de óleo de cozinha com excesso de gordura dificultam a reciclagem e podem contaminar outros materiais secos como o papel. O ideal é escorrer bem todo o restante do óleo antes de enviar a garrafa para a coleta seletiva de plástico. Sempre confirme as regras de triagem e os pontos de coleta com a prefeitura ou cooperativa local.",
+    "categoria": "óleo de cozinha",
+    "fonte": "Boas práticas de coleta seletiva e triagem de recicláveis (TODO: conferir orientação específica da cooperativa local)"
+  },
+  {
+    "id": "doc_06",
+    "pergunta": "Onde descartar lâmpadas fluorescentes, de vapor de sódio ou mercúrio?",
+    "resposta": "Lâmpadas fluorescentes (compactas ou tubulares) e de vapor metálico contêm mercúrio, um metal tóxico à saúde e ao meio ambiente. Elas estão sujeitas à logística reversa obrigatória prevista na Lei 12.305/2010: embale-as em papelão ou na caixa original para evitar que quebrem e deposite-as em coletores específicos em lojas de materiais de construção ou supermercados. Confirme os pontos de coleta disponíveis com a prefeitura ou cooperativa local.",
+    "categoria": "lâmpadas",
+    "fonte": "Lei Federal nº 12.305/2010 (Art. 33, V) - Acordo Setorial de Lâmpadas (TODO: conferir pontos da entidade gestora Reciclus)"
+  },
+  {
+    "id": "doc_07",
+    "pergunta": "O que fazer quando uma lâmpada fluorescente quebra dentro de casa?",
+    "resposta": "Se uma lâmpada fluorescente quebrar, abra as janelas para ventilar o ambiente por pelo menos 15 minutos e não use aspirador de pó para não espalhar o vapor de mercúrio. Recolha os cacos com papelão rígido, use fita adesiva para pegar os fragmentos menores e embale tudo em recipiente vedado e identificado antes de levar ao ponto de descarte adequado. Confirme como entregar esse material com a prefeitura ou cooperativa local.",
+    "categoria": "lâmpadas",
+    "fonte": "Orientações gerais de segurança ambiental sobre lâmpadas com mercúrio (TODO: conferir protocolo da vigilância ambiental local)"
+  },
+  {
+    "id": "doc_08",
+    "pergunta": "Como descartar lâmpadas de LED queimadas?",
+    "resposta": "Embora as lâmpadas de LED não contenham mercúrio como as fluorescentes, elas possuem componentes eletrônicos, plásticos e metais que não devem ir para o lixo comum. O recomendado é encaminhá-las para pontos de coleta de lixo eletrônico ou coletores de lâmpadas em comércios parceiros. Confirme os pontos de coleta que aceitam LED com a prefeitura ou cooperativa local.",
+    "categoria": "lâmpadas",
+    "fonte": "Política Nacional de Resíduos Sólidos (Lei 12.305/2010) e Decreto nº 10.240/2020 (TODO: conferir enquadramento local de lâmpadas LED)"
+  },
+  {
+    "id": "doc_09",
+    "pergunta": "Onde jogar fora celulares antigos, cabos, carregadores e fones de ouvido?",
+    "resposta": "Celulares, cabos, carregadores e pequenos acessórios são resíduos eletroeletrônicos (REEE) e contêm metais valiosos e substâncias que não podem ir para aterros comuns. Pelo sistema de logística reversa (Lei 12.305/2010 e Decreto 10.240/2020), eles devem ser depositados em pontos de coleta de lixo eletrônico (PEVs) em lojas de telefonia, shoppings ou ecopontos. Antes de descartar celulares ou computadores, apague seus dados pessoais. Confirme os pontos de coleta com a prefeitura ou cooperativa local.",
+    "categoria": "eletroeletrônicos",
+    "fonte": "Lei Federal nº 12.305/2010 e Decreto Federal nº 10.240/2020 (TODO: conferir lista de PEVs de eletroeletrônicos)"
+  },
+  {
+    "id": "doc_10",
+    "pergunta": "Como descartar eletrodomésticos grandes como geladeira, fogão, micro-ondas e TV?",
+    "resposta": "Eletrodomésticos de grande porte (linha branca e marrom) contêm motores, placas eletrônicas e, no caso de geladeiras, gases refrigerantes que exigem descaracterização segura. Não os abandone em calçadas ou terrenos baldios: utilize serviços de coleta agendada municipal, ecopontos ou programas de logística reversa de fabricantes. Confirme os pontos de coleta ou agendamento cata-bagulho com a prefeitura ou cooperativa local.",
+    "categoria": "eletroeletrônicos",
+    "fonte": "Lei Federal nº 12.305/2010 e Decreto Federal nº 10.240/2020 (TODO: conferir regras municipais de coleta volumosa)"
+  },
+  {
+    "id": "doc_11",
+    "pergunta": "Como descartar remédios vencidos e por que não jogar no lixo comum ou vaso sanitário?",
+    "resposta": "Medicamentos vencidos ou sobras de remédios nunca devem ser jogados no lixo comum (pois oferecem risco a coletores e animais) nem na pia ou vaso sanitário (pois contaminam a água com substâncias químicas como antibióticos e hormônios que o tratamento de esgoto não remove). Para descartar corretamente, leve-os até farmácias, drogarias participantes da logística reversa ou unidades de saúde. Confirme os pontos de coleta com a prefeitura ou cooperativa local.",
+    "categoria": "medicamentos vencidos",
+    "fonte": "Decreto Federal nº 10.388/2020 e Lei 12.305/2010 (TODO: conferir farmácias cadastradas no sistema de logística reversa)"
+  },
+  {
+    "id": "doc_12",
+    "pergunta": "O que fazer com as caixas de papelão e bulas dos medicamentos?",
+    "resposta": "As embalagens secundárias de medicamentos — isto é, as caixinhas de papelão e as bulas de papel que não tiveram contato direto com o remédio — podem ser descartadas normalmente na coleta seletiva de papel, desde que estejam limpas e secas. Recomenda-se rasgar a caixa para evitar reutilização indevida. Já as cartelas (blísters) e frascos com restos de remédio vão para o coletor de farmácia. Confirme os pontos de coleta com a prefeitura ou cooperativa local.",
+    "categoria": "medicamentos vencidos",
+    "fonte": "Decreto Federal nº 10.388/2020 - Logística reversa de medicamentos domiciliares (TODO: conferir detalhes do decreto)"
+  },
+  {
+    "id": "doc_13",
+    "pergunta": "Como descartar agulhas, seringas e lancetas usadas em casa?",
+    "resposta": "Agulhas, seringas e lancetas são resíduos perfurocortantes com risco biológico e jamais devem ir soltos para o lixo comum ou reciclável, pois podem ferir gravemente os trabalhadores da coleta. Armazene-os em um coletor específico de parede rígida (ou recipiente plástico resistente devidamente lacrado e identificado) e entregue-o na Unidade Básica de Saúde (UBS) ou posto de saúde. Confirme os locais de recebimento com a prefeitura ou cooperativa local.",
+    "categoria": "medicamentos vencidos",
+    "fonte": "RDC ANVISA nº 222/2018 e orientações do Ministério da Saúde (TODO: conferir fluxo das UBS do seu município)"
+  },
+  {
+    "id": "doc_14",
+    "pergunta": "Como descartar garrafas e potes de vidro inteiros para reciclagem?",
+    "resposta": "Garrafas de bebidas, potes de alimentos e frascos de vidro são 100% recicláveis. Retire as tampas plásticas ou metálicas, faça uma lavagem rápida com água de reuso para tirar restos orgânicos e deixe escorrer antes de colocar na coleta seletiva (cor verde no padrão CONAMA). Confirme os dias e pontos de coleta seletiva com a prefeitura ou cooperativa local.",
+    "categoria": "vidro",
+    "fonte": "Resolução CONAMA nº 275/2001 (código de cores) e Lei 12.305/2010 (TODO: conferir regras da coleta seletiva municipal)"
+  },
+  {
+    "id": "doc_15",
+    "pergunta": "Como embalar vidro quebrado ou cacos de vidro com segurança?",
+    "resposta": "Cacos de vidro oferecem alto risco de corte aos garis e catadores. Envolva os cacos em várias folhas de jornal grosso, coloque-os dentro de uma caixa de papelão ou dentro de uma garrafa PET cortada ao meio e fechada com fita adesiva, e escreva claramente do lado de fora: 'CUIDADO: VIDRO QUEBRADO'. Confirme os pontos de coleta e orientações com a prefeitura ou cooperativa local.",
+    "categoria": "vidro",
+    "fonte": "Manuais de segurança na coleta seletiva e proteção a catadores (TODO: conferir recomendações da cooperativa local)"
+  },
+  {
+    "id": "doc_16",
+    "pergunta": "Espelhos, vidros temperados (pirex) e cerâmicas são recicláveis junto com garrafas?",
+    "resposta": "Na maioria das cooperativas, espelhos, vidros temperados, travessas refratárias (tipo pirex), cristais, porcelanas e cerâmicas não são reciclados junto com o vidro comum de embalagens, pois possuem composição química e ponto de fusão diferentes. Caso estejam quebrados, embale-os muito bem com identificação de perigo antes de descartar conforme orientação municipal. Confirme se há pontos de coleta específicos com a prefeitura ou cooperativa local.",
+    "categoria": "vidro",
+    "fonte": "Diretrizes técnicas de reciclagem de vidro e coleta seletiva (TODO: conferir aceitação na cooperativa da região)"
+  },
+  {
+    "id": "doc_17",
+    "pergunta": "Quais tipos de papel e papelão podem ir para a coleta seletiva?",
+    "resposta": "Jornais, revistas, folhas de caderno, sulfite, envelopes, caixas de papelão e embalagens longa vida limpas podem ser encaminhados para a reciclagem de papel (cor azul no padrão CONAMA). O material deve estar seco e livre de restos de comida. Dobre ou desmonte as caixas de papelão para economizar espaço no transporte. Confirme os pontos de coleta com a prefeitura ou cooperativa local.",
+    "categoria": "papel",
+    "fonte": "Resolução CONAMA nº 275/2001 e orientações gerais de coleta seletiva (TODO: conferir regras locais para embalagens longa vida)"
+  },
+  {
+    "id": "doc_18",
+    "pergunta": "O que fazer com caixa de pizza usada, guardanapo sujo e papel higiênico?",
+    "resposta": "No caso da caixa de pizza, separe as partes: a base que ficou engordurada ou manchada de queijo deve ir para o lixo comum (rejeito), mas se a tampa de papelão estiver limpa e seca, destaque-a e coloque na reciclagem de papel. Já guardanapos sujos de comida e papel higiênico usado nunca são recicláveis, pois a gordura e resíduos biológicos estragam a polpa de celulose, devendo ir sempre para o lixo comum (rejeito). Confirme os pontos de coleta com a prefeitura ou cooperativa local.",
+    "categoria": "papel",
+    "fonte": "Boas práticas de separação na fonte - Coleta Seletiva / PNRS (TODO: conferir cartilha municipal)"
+  },
+  {
+    "id": "doc_19",
+    "pergunta": "Papel térmico de cupom fiscal (notinha), etiquetas adesivas e fotografias são recicláveis?",
+    "resposta": "Cupons fiscais impressos em papel térmico, fotografias antigas, papel carbono e fitas adesivas geralmente são classificados como rejeito, pois contêm resinas, solventes ou camadas plásticas que inviabilizam a reciclagem convencional de papel. Descarte-os no lixo comum (rejeito) e evite misturá-los aos papéis recicláveis. Confirme sempre as regras e pontos de coleta com a prefeitura ou cooperativa local.",
+    "categoria": "papel",
+    "fonte": "Orientações técnicas de triagem de papel em cooperativas (TODO: conferir lista de materiais aceitos pela cooperativa local)"
+  },
+  {
+    "id": "doc_20",
+    "pergunta": "Como preparar embalagens de plástico para a reciclagem?",
+    "resposta": "Garrafas PET, potes de margarina, frascos de produtos de limpeza e xampu, tampinhas e sacolas limpas são recicláveis (cor vermelha no padrão CONAMA). Esvazie completamente os recipientes e retire o excesso de resíduos (usando um guardanapo usado ou a água do enxágue da louça) para evitar mau cheiro e atração de insetos nas cooperativas. Confirme os pontos de coleta com a prefeitura ou cooperativa local.",
+    "categoria": "plástico",
+    "fonte": "Resolução CONAMA nº 275/2001 e diretrizes de consumo consciente (TODO: conferir orientações locais de higienização)"
+  },
+  {
+    "id": "doc_21",
+    "pergunta": "Isopor (EPS) é reciclável e onde deve ser descartado?",
+    "resposta": "O isopor (poliestireno expandido - EPS) é um tipo de plástico 100% reciclável, desde que esteja limpo e sem gordura ou restos de alimentos. Deve ser descartado junto aos plásticos secos na coleta seletiva. Porém, como ele é muito leve e ocupa grande volume, nem todas as cooperativas conseguem processá-lo economicamente. Por isso, confirme os pontos de coleta que aceitam isopor com a prefeitura ou cooperativa local.",
+    "categoria": "plástico",
+    "fonte": "Norma ABNT NBR 13230 (simbologia de plásticos - PS) e coleta seletiva (TODO: conferir se a cooperativa local recebe EPS)"
+  },
+  {
+    "id": "doc_22",
+    "pergunta": "Embalagens de salgadinho (metalizadas) e cabos de panela são plásticos recicláveis?",
+    "resposta": "Embalagens metalizadas (como pacotes de salgadinho e biscoito) são compostas por multicamadas de plástico e alumínio difíceis de separar, e cabos de panela ou tomadas são plásticos termofixos (que não derretem novamente). Na maioria dos municípios, esses itens acabam sendo rejeitos se não houver programa específico. Confirme se há projetos ou pontos de coleta para esses materiais com a prefeitura ou cooperativa local.",
+    "categoria": "plástico",
+    "fonte": "Diretrizes de reciclabilidade de polímeros e triagem (TODO: conferir programas locais para plásticos multicamadas)"
+  },
+  {
+    "id": "doc_23",
+    "pergunta": "Como descartar latas de alumínio e latas de aço (conservas)?",
+    "resposta": "Latas de refrigerante (alumínio) e latas de alimentos em conserva, milho ou leite em pó (aço) têm alto valor de reciclagem (cor amarela no padrão CONAMA). Retire os restos de alimentos, dobre a tampa da lata de aço para dentro para evitar cortes nos catadores e encaminhe para a coleta seletiva. Confirme os pontos de coleta e horários com a prefeitura ou cooperativa local.",
+    "categoria": "metal",
+    "fonte": "Resolução CONAMA nº 275/2001 e Lei 12.305/2010 (TODO: conferir instruções da coleta seletiva municipal)"
+  },
+  {
+    "id": "doc_24",
+    "pergunta": "Latas de aerossol (desodorante, inseticida) e latas de tinta podem ir para a reciclagem?",
+    "resposta": "Latas de aerossol vazias de uso doméstico (como desodorante) geralmente podem ser recicladas se estiverem completamente sem gás e sem produto, mas nunca devem ser furadas ou amassadas. Já latas de tinta, verniz ou solventes contêm resíduos químicos perigosos e precisam de destinação específica ou logística reversa em lojas de construção/ecopontos. Confirme a regra exata e os pontos de coleta com a prefeitura ou cooperativa local.",
+    "categoria": "metal",
+    "fonte": "Lei Federal nº 12.305/2010 e Resolução CONAMA nº 307/2002 (TODO: conferir regras do ecoponto municipal para latas de tinta)"
+  },
+  {
+    "id": "doc_25",
+    "pergunta": "Onde descartar entulho de pequenas reformas (tijolos, concreto, azulejos)?",
+    "resposta": "Resíduos da construção civil (entulho) como restos de tijolos, argamassa, concreto e pisos não podem ser colocados no lixo domiciliar comum nem abandonados em vias públicas. Pequenos volumes (geralmente até 1 metro cúbico, dependendo do município) podem ser entregues gratuitamente nos Ecopontos municipais; volumes maiores exigem a contratação de caçambas cadastradas. Confirme o limite de volume e os pontos de coleta (Ecopontos) com a prefeitura ou cooperativa local.",
+    "categoria": "entulho",
+    "fonte": "Resolução CONAMA nº 307/2002 e Lei 12.305/2010 (TODO: conferir limite diário em m³ nos Ecopontos da sua prefeitura)"
+  },
+  {
+    "id": "doc_26",
+    "pergunta": "Como descartar restos de gesso e telhas de amianto da construção civil?",
+    "resposta": "O gesso não deve ser misturado ao entulho comum de alvenaria, mas separado para reciclagem específica nos Ecopontos. Já telhas e caixas d'água antigas que contenham amianto são resíduos perigosos (Classe D na Resolução CONAMA 307/2002) porque a poeira do amianto é tóxica quando inalada: não quebre as peças e procure orientação especializada do órgão ambiental para o descarte seguro. Confirme os pontos e procedimentos com a prefeitura ou cooperativa local.",
+    "categoria": "entulho",
+    "fonte": "Resolução CONAMA nº 307/2002 (e alterações como CONAMA 348/2004 e 431/2011) (TODO: conferir regras municipais para gesso e amianto)"
+  },
+  {
+    "id": "doc_27",
+    "pergunta": "Onde descartar pneus velhos ou carecas (inservíveis)?",
+    "resposta": "Pneus inservíveis jamais devem ser abandonados no meio ambiente ou queimados a céu aberto, pois demoram centenas de anos para se decompor, acumulam água parada (foco do mosquito da dengue) e liberam fumaça tóxica. Pela logística reversa obrigatória (Lei 12.305/2010 e CONAMA 416/2009), deixe os pneus usados na borracharia ou revenda na hora da troca, ou entregue-os em Ecopontos credenciados. Confirme os pontos de coleta de pneus com a prefeitura ou cooperativa local.",
+    "categoria": "pneus",
+    "fonte": "Lei Federal nº 12.305/2010 (Art. 33, III) e Resolução CONAMA nº 416/2009 (TODO: conferir pontos da Reciclanip / Ecopontos locais)"
+  },
+  {
+    "id": "doc_28",
+    "pergunta": "Câmaras de ar de pneus de bicicleta ou moto são recicláveis?",
+    "resposta": "Câmaras de ar e pneus de bicicleta de borracha não devem ir para o lixo comum. Eles podem ser reaproveitados por oficinas, artesãos ou entregues em pontos de coleta de borracha e Ecopontos que destinam o material para trituração e coprocessamento. Confirme os pontos de coleta que recebem borracha com a prefeitura ou cooperativa local.",
+    "categoria": "pneus",
+    "fonte": "Diretrizes da Política Nacional de Resíduos Sólidos - Lei 12.305/2010 (TODO: conferir aceitação em oficinas e ecopontos locais)"
+  },
+  {
+    "id": "doc_29",
+    "pergunta": "O que fazer com resíduos orgânicos como cascas de frutas, verduras e borra de café?",
+    "resposta": "Restos de alimentos crus (cascas de frutas, legumes, verduras, cascas de ovos e borra de café com filtro de papel) representam grande parte do lixo domiciliar e podem ser transformados em adubo rico por meio da compostagem doméstica (minhocário ou composteira seca) ou entregues em programas de coleta orgânica/pátios de compostagem. Isso reduz a emissão de gás metano nos aterros. Confirme iniciativas de compostagem e pontos de coleta com a prefeitura ou cooperativa local.",
+    "categoria": "orgânicos",
+    "fonte": "Lei Federal nº 12.305/2010 (Art. 36, V - implantação de sistema de compostagem) (TODO: conferir pátios de compostagem ou feiras participantes no município)"
+  },
+  {
+    "id": "doc_30",
+    "pergunta": "Restos de carne, laticínios, ossos e fezes de animais podem ir na composteira doméstica?",
+    "resposta": "Em composteiras domésticas comuns (com minhocas), não é recomendado colocar carnes, ossos, laticínios, alimentos muito gordurosos ou fezes de animais domésticos, pois eles geram mau cheiro, atraem pragas e podem conter patógenos. Esses itens devem ser descartados no lixo comum (úmido/rejeito) bem embalados, a menos que você utilize um sistema específico que os aceite. Confirme as orientações de coleta domiciliar e pontos de coleta com a prefeitura ou cooperativa local.",
+    "categoria": "orgânicos",
+    "fonte": "Manuais técnicos de compostagem doméstica (MMA/Embrapa) e Lei 12.305/2010 (TODO: conferir guias locais de compostagem urbana)"
+  }
+]
+
