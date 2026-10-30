@@ -12,6 +12,8 @@ license: mit
 
 # ♻️ ReeciclaEBot-RAG
 
+🔗 **Demonstração online (Hugging Face Spaces):** [https://huggingface.co/spaces/Miguelprsilva/ReeciclaEBot-RAG](https://huggingface.co/spaces/Miguelprsilva/ReeciclaEBot-RAG)
+
 O **ReeciclaEBot-RAG** é um chatbot educativo em português sobre **descarte correto e reciclagem de resíduos sólidos no Brasil**, desenvolvido como projeto de portfólio para Engenharia de Inteligência Artificial.
 
 O sistema utiliza a arquitetura **RAG (*Retrieval-Augmented Generation* / Geração Aumentada por Recuperação)** para responder dúvidas com base em uma base de conhecimento estruturada (fundamentada na **Política Nacional de Resíduos Sólidos — Lei nº 12.305/2010**, decretos de logística reversa e normas do CONAMA), evitando alucinações e sempre orientando o usuário a confirmar os pontos de coleta com a prefeitura ou cooperativa local.
