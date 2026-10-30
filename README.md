@@ -12,43 +12,47 @@ license: mit
 
 # ♻️ ReeciclaEBot-RAG
 
-🔗 **Demonstração online (Hugging Face Spaces):** [https://huggingface.co/spaces/Miguelprsilva/ReeciclaEBot-RAG](https://huggingface.co/spaces/Miguelprsilva/ReeciclaEBot-RAG)
+🔗 **Demonstração online (Hugging Face Spaces):** https://huggingface.co/spaces/Miguelprsilva/ReeciclaEBot-RAG
 
-O **ReeciclaEBot-RAG** é um chatbot educativo em português sobre **descarte correto e reciclagem de resíduos sólidos no Brasil**, desenvolvido como projeto de portfólio para Engenharia de Inteligência Artificial.
+O **ReeciclaEBot-RAG** é um chatbot educativo em português sobre **descarte correto e reciclagem de resíduos sólidos no Brasil**, desenvolvido como projeto de portfólio em Engenharia de Inteligência Artificial.
 
-O sistema utiliza a arquitetura **RAG (*Retrieval-Augmented Generation* / Geração Aumentada por Recuperação)** para responder dúvidas com base em uma base de conhecimento estruturada (fundamentada na **Política Nacional de Resíduos Sólidos — Lei nº 12.305/2010**, decretos de logística reversa e normas do CONAMA), evitando alucinações e sempre orientando o usuário a confirmar os pontos de coleta com a prefeitura ou cooperativa local.
+O sistema usa a arquitetura **RAG** (*Retrieval-Augmented Generation*, ou Geração Aumentada por Recuperação) para responder dúvidas com base em uma base de conhecimento estruturada, fundamentada na Política Nacional de Resíduos Sólidos (Lei nº 12.305/2010), em decretos de logística reversa e em normas do CONAMA. A resposta só sai de trechos recuperados da base, o que reduz o risco de alucinação, e o bot sempre orienta o usuário a confirmar os pontos de coleta com a prefeitura ou a cooperativa local.
 
----
+## ℹ️ Estado atual da demonstração
 
-## 🏗️ Arquitetura do Sistema
+- **Recuperação semântica:** funcionando e avaliada (resultados abaixo).
+- **Geração com LLM:** a camada com Llama 3.1 8B via API do Hugging Face está implementada em `src/llm.py`, mas **não foi validada de ponta a ponta na demonstração pública**, porque a chamada gratuita da API não funcionou com o meu token.
+- **Por isso, a demo pública roda em modo fallback:** devolve a resposta do item mais parecido da base (Top-1), sem reescrita por LLM.
+
+## 🏗️ Arquitetura do sistema
 
 ```text
-[Pergunta do Usuário]
+[Pergunta do usuário]
          │
          ▼
 ┌──────────────────────────────────────────────────────────┐
 │ 1. RECUPERAÇÃO (src/rag.py)                              │
-│  • Gera embedding da pergunta (sentence-transformers)    │
+│  • Gera o embedding da pergunta (sentence-transformers)  │
 │    Modelo: paraphrase-multilingual-MiniLM-L12-v2         │
-│  • Calcula similaridade de cosseno (numpy) contra os     │
-│    30 documentos de data/base_conhecimento.json          │
+│  • Calcula a similaridade de cosseno (NumPy) contra os   │
+│    30 itens de data/base_conhecimento.json               │
 │  • Seleciona os Top-3 trechos com maior pontuação        │
 └──────────────────────────┬───────────────────────────────┘
                            │
                            ▼
-         ┌─────────────────────────────────┐
-         │ Maior pontuação >= Limiar (0.45)?│
-         └───────┬─────────────────┬───────┘
+         ┌──────────────────────────────────┐
+         │ Maior pontuação >= limiar (0,45)? │
+         └───────┬─────────────────┬────────┘
              NÃO │                 │ SIM
                  ▼                 ▼
 ┌──────────────────────┐  ┌────────────────────────────────────────────┐
 │ Responde que não tem │  │ 2. GERAÇÃO (src/llm.py)                    │
-│ essa informação na   │  │  • Se HF_TOKEN ativo: envia Top-3 trechos  │
-│ base (sem inventar)  │  │    ao InferenceClient (Llama-3.1-8B)       │
-└──────────────────────┘  │    pedindo resposta baseada nos trechos    │
-                          │    e citação da categoria.                 │
-                          │  • Se sem HF_TOKEN ou falha na API:        │
-                          │    ativa FALLBACK e retorna a resposta     │
+│ essa informação na   │  │  • Com HF_TOKEN ativo: envia os Top-3      │
+│ base (sem inventar)  │  │    trechos ao InferenceClient (Llama 3.1   │
+└──────────────────────┘  │    8B), pedindo resposta baseada neles e   │
+                          │    citação da categoria.                   │
+                          │  • Sem HF_TOKEN ou com falha na API:       │
+                          │    ativa o FALLBACK e retorna a resposta   │
                           │    direta do item Top-1 mais parecido.     │
                           └─────────────────────┬──────────────────────┘
                                                 │
@@ -61,22 +65,20 @@ O sistema utiliza a arquitetura **RAG (*Retrieval-Augmented Generation* / Geraç
                           └────────────────────────────────────────────┘
 ```
 
----
-
-## 📂 Estrutura do Projeto
+## 📂 Estrutura do projeto
 
 ```text
 ReeciclaEBot-RAG/
 ├── app.py                      # Interface web Gradio
 ├── requirements.txt            # Dependências do projeto
-├── .env.example                # Exemplo de configuração de variáveis de ambiente
+├── .env.example                # Exemplo de variáveis de ambiente
 ├── .gitignore                  # Arquivos ignorados pelo Git
 ├── README.md                   # Documentação do projeto
 ├── data/
 │   └── base_conhecimento.json  # 30 itens sobre 12 categorias de resíduos no Brasil
 ├── src/
 │   ├── data.py                 # Leitura, validação e preparação da base JSON
-│   ├── rag.py                  # Geração de embeddings e similaridade de cosseno (NumPy)
+│   ├── rag.py                  # Embeddings e similaridade de cosseno (NumPy)
 │   └── llm.py                  # Integração com Hugging Face InferenceClient e fallback
 ├── eval/
 │   ├── perguntas_teste.json    # 20 perguntas reformuladas para avaliação
@@ -85,87 +87,96 @@ ReeciclaEBot-RAG/
     └── test_rag.py             # Testes automatizados com pytest
 ```
 
----
+## 🚀 Como rodar localmente
 
-## 🚀 Como Rodar Localmente
-
-### 1. Criar e ativar um ambiente virtual
+**1. Criar e ativar um ambiente virtual**
 
 No Windows (PowerShell):
+
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
 
-No Linux / macOS:
+No Linux/macOS:
+
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-### 2. Instalar as dependências
+**2. Instalar as dependências**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Iniciar a interface Gradio
+**3. Iniciar a interface Gradio**
 
 ```bash
 python app.py
 ```
-Acesse o endereço local exibido no terminal (`http://127.0.0.1:7860`).
 
----
+Acesse o endereço local exibido no terminal (normalmente http://127.0.0.1:7860).
 
-## 🔑 Como Configurar o `HF_TOKEN`
+## 🔑 Como configurar o HF_TOKEN
 
-Nenhum token fica salvo no código. Para usar a geração via API da Hugging Face:
+Nenhum token fica salvo no código. Para usar a geração via API do Hugging Face:
 
-1. Crie uma cópia do arquivo `.env.example` com o nome `.env`:
+1. Copie o arquivo `.env.example` para `.env`:
+
    ```bash
    cp .env.example .env
    ```
-2. Preencha o seu token no arquivo `.env`:
+
+2. Preencha o token no arquivo `.env`:
+
    ```env
    HF_TOKEN=hf_seu_token_aqui
    HF_MODEL=meta-llama/Llama-3.1-8B-Instruct
    ```
-3. **Modo Fallback:** Se `HF_TOKEN` não estiver configurado ou a chamada à API falhar, o sistema retorna automaticamente a resposta oficial do item mais semelhante encontrado na base (`Top-1`).
-4. **No Hugging Face Spaces:** Configure `HF_TOKEN` em *Settings -> Variables and secrets -> New secret*.
 
----
+**Modo fallback:** se o `HF_TOKEN` não estiver configurado ou se a chamada à API falhar, o sistema retorna automaticamente a resposta do item mais semelhante encontrado na base (Top-1).
 
-## 📊 Resultados da Avaliação e Testes
+**No Hugging Face Spaces:** configure o `HF_TOKEN` em *Settings → Variables and secrets → New secret*.
 
-A avaliação da recuperação foi feita com o arquivo `eval/perguntas_teste.json`, contendo **20 perguntas escritas de forma diferente das perguntas da base**.
+## 📊 Resultados da avaliação e testes
 
-Comandos para rodar os testes e a avaliação:
+A avaliação da recuperação usa o arquivo `eval/perguntas_teste.json`, com 20 perguntas escritas de forma diferente das perguntas da base.
+
+Para rodar os testes e a avaliação:
 
 ```bash
 pytest tests/ -v
 python eval/avaliar.py
 ```
 
-### Métricas Obtidas (`eval/avaliar.py`)
+**Métricas obtidas** (`eval/avaliar.py`):
 
-- **Total de perguntas de teste:** 20
-- **Taxa de acerto no Top-1:** **17/20 (85.0%)**
-- **Taxa de acerto no Top-3:** **18/20 (90.0%)**
-- **Testes automatizados (`pytest tests/ -v`):** **5/5 passando (100%)**
+| Métrica | Resultado |
+|---|---|
+| Perguntas de teste | 20 |
+| Acerto no Top-1 | 17/20 (85,0%) |
+| Acerto no Top-3 | 18/20 (90,0%) |
+| Testes automatizados (pytest) | 5/5 passando |
 
----
+Essas métricas medem apenas a **recuperação** (se o item certo aparece entre os mais parecidos). A qualidade da resposta gerada pelo LLM não foi avaliada.
 
 ## ⚠️ Limitações
 
-1. **Base de conhecimento enxuta:** Conta com 30 itens gerais baseados na legislação federal (Lei 12.305/2010 e normas CONAMA).
-2. **Regras municipais variáveis:** Dias de coleta seletiva, endereços de Ecopontos e materiais aceitos variam conforme a cidade ou cooperativa local (por isso todas as respostas orientam a confirmação local e possuem marcações `TODO` para revisão).
-3. **Busca apenas semântica:** Erros graves de digitação ou siglas muito específicas podem reduzir a pontuação de similaridade se não houver busca léxica combinada.
+- **Base de conhecimento enxuta:** 30 itens gerais, baseados na legislação federal (Lei 12.305/2010 e normas do CONAMA).
+- **Avaliação pequena:** 20 perguntas dão uma estimativa limitada, e os números podem mudar com um conjunto maior.
+- **Regras municipais variam:** dias de coleta seletiva, endereços de Ecopontos e materiais aceitos mudam conforme a cidade ou a cooperativa, por isso todas as respostas orientam a confirmação local.
+- **Busca apenas semântica:** erros graves de digitação ou siglas muito específicas podem reduzir a pontuação de similaridade, pois não há busca léxica combinada.
+- **Geração com LLM não validada na demo pública** (veja "Estado atual da demonstração").
 
----
+## 🛣️ Próximos passos
 
-## 🛣️ Próximos Passos
+- **Validar a geração com LLM** de ponta a ponta e medir a qualidade das respostas geradas.
+- **Busca híbrida (BM25 + embeddings):** combinar busca por palavras-chave exatas com busca vetorial.
+- **Reclassificação (Cross-Encoder):** reordenar os 3 trechos recuperados antes da etapa de geração.
+- **Consulta por município/CEP:** integrar dados abertos municipais para indicar Ecopontos próximos.
 
-- **Busca Híbrida (BM25 + Embeddings):** Combinar busca por palavras-chave exatas com busca vetorial.
-- **Reranking (Cross-Encoder):** Reordenar os 3 trechos recuperados com um modelo Cross-Encoder antes da etapa de geração.
-- **Consulta por Município/CEP:** Integrar dados abertos municipais para indicar Ecopontos próximos ao usuário.
+## 📄 Licença
+
+MIT.
